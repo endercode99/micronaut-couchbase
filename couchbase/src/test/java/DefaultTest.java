@@ -1,13 +1,12 @@
-import com.couchbase.client.core.lang.Tuple2;
-import com.couchbase.client.java.Bucket;
 import com.couchbase.client.java.Cluster;
-import com.couchbase.client.java.document.JsonDocument;
-import com.couchbase.client.java.document.json.JsonObject;
-import com.couchbase.mock.CouchbaseMock;
-import io.micronaut.configuration.couchbase.CouchbaseSettings;
+import com.couchbase.client.java.Collection;
+import com.couchbase.client.java.json.JsonObject;
+import com.couchbase.client.java.kv.GetResult;
 import io.micronaut.context.ApplicationContext;
+
 import io.micronaut.context.env.PropertySource;
 import io.micronaut.core.util.CollectionUtils;
+
 import org.junit.Test;
 import util.TestUtil;
 
@@ -34,28 +33,19 @@ public class DefaultTest {
     @Test
     public void basicKeyValueOperations() throws IOException, InterruptedException {
         String bucketName = "default";
-        // Start the Couchbase mock process
-        Tuple2<ApplicationContext, CouchbaseMock> contentAndMock = TestUtil.initCouchbaseMock(bucketName);
+        String imageName = "couchbase/server";
 
-        try {
-            // Access a Couchbase cluster
-            Cluster cluster = contentAndMock.value1().getBean(Cluster.class);
+        ApplicationContext applicationContext = TestUtil.initCouchbaseTestContainer(bucketName, imageName);
+        Cluster cluster = applicationContext.getBean(Cluster.class);
 
-            // Access a Couchbase bucket resource on the cluster
-            Bucket bucket = cluster.openBucket(bucketName);
+        Collection collection = cluster.bucket(bucketName).defaultCollection();
 
-            // Upsert some JSON to the key "id"
-            bucket.upsert(JsonDocument.create("id", JsonObject.create().put("foo", "bar")));
+        collection.upsert("id", JsonObject.create().put("foo", "bar"));
 
-            // Get that JSON back
-            JsonDocument result = bucket.get("id");
+        Optional<GetResult> result = Optional.ofNullable(collection.get("id"));
 
-            // Check it's what's expected
-            assertEquals("bar", result.content().getString("foo"));
-        }
-        finally {
-            // Finish by stopping the Couchbase mock
-            contentAndMock.value2().stop();
-        }
+        assertTrue(result.isPresent());
+        assertEquals("bar", result.get().contentAs(JsonObject.class).getString("foo"));
+
     }
 }
