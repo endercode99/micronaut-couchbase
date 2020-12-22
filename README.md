@@ -8,3 +8,18 @@ This is a configuration for using Couchbase in Micronaut applications.
 ## Documentation ##
 
 See the [Documentation](https://micronaut-projects.github.io/micronaut-couchbase/latest/guide/index.html) for more information.
+
+
+## Running the Test ##
+The tests use the Testconainters [Couchbase Module](https://www.testcontainers.org/modules/databases/couchbase/). To run the tests, you need to have docker installed and running. 
+```sh
+./gradlew test
+```
+
+## Usage ##
+Once the integration is published as a feature by Micronaut, users should be able to generate Micronaut projects using the [Micronaut Launch Tool.](https://micronaut.io/launch/)
+
+## Licences ##
+The original licences that [this repository](https://github.com/micronaut-projects/micronaut-couchbase) have been forked from have not been changed.
+
+
