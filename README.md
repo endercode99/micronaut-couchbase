@@ -11,7 +11,7 @@ See the [Documentation](https://micronaut-projects.github.io/micronaut-couchbase
 
 
 ## Running the Test ##
-The tests use the Testconainters [Couchbase Module](https://www.testcontainers.org/modules/databases/couchbase/). To run the tests, you need to have docker installed and running. 
+The tests use the Testcontainers [Couchbase Module](https://www.testcontainers.org/modules/databases/couchbase/). To run the tests, you need to have docker installed and running. 
 ```sh
 ./gradlew test
 ```
@@ -19,13 +19,13 @@ The tests use the Testconainters [Couchbase Module](https://www.testcontainers.o
 ## Usage ##
 Once the integration is published as a feature by Micronaut, users should be able to generate Micronaut projects using the [Micronaut Launch Tool.](https://micronaut.io/launch/)
 
-## Licences ##
-The original licences that [this repository](https://github.com/micronaut-projects/micronaut-couchbase) have been forked from have not been changed.
+## Licenses ##
+The original licenses that [this repository](https://github.com/micronaut-projects/micronaut-couchbase) have been forked from have not been changed.
 
 
 ## Update Files ##
 This repo has been forked from https://github.com/micronaut-projects/micronaut-couchbase.git with the following updates:
-8 changed files  with 129 additions and 107 deletions.  
+8 changed files  with 129 additions and 107 deletions.
 
 README.md   
 couchbase/build.gradle   
