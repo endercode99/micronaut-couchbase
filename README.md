@@ -23,3 +23,14 @@ Once the integration is published as a feature by Micronaut, users should be abl
 The original licences that [this repository](https://github.com/micronaut-projects/micronaut-couchbase) have been forked from have not been changed.
 
 
+## Update Files ##
+This repo has been forked from https://github.com/micronaut-projects/micronaut-couchbase.git with the following updates:
+8 changed files  with 129 additions and 107 deletions.  
+README.md   
+couchbase/build.gradle   
+couchbase/src/main/java/io/micronaut/configuration/couchbase/CouchbaseSettings.java  
+couchbase/src/main/java/io/micronaut/configuration/couchbase/DefaultCouchbaseClientFactory.java  
+couchbase/src/main/java/io/micronaut/configuration/couchbase/DefaultCouchbaseConfiguration.java  
+couchbase/src/test/java/DefaultTest.java  
+couchbase/src/test/java/util/TestUtil.java    
+docs-examples/example-java/src/main/java/example/Example.java  
